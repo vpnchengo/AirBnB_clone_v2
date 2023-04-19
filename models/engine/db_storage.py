@@ -49,9 +49,24 @@ class DBStorage:
         return my_dic
 
     def new(self, obj):
+        """adds a new object to the current database"""
+        self.__session.add(obj)
+
     def save(self):
+        """saves chnages to db"""
+        self.__session.commit()
+
     def delete(self, obj=None):
+        """deletes obj from db"""
+        self.__session.delete(obj)
+
     def reload(self):
+        """creates all tables in the db & initializes new session"""
+        Base.metadata.create_all(self.__engine)
+        sess = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess)
+        self.__session = Session()
+
     def close(self):
         """calls remove method"""
         self.__session.close()

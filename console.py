@@ -74,28 +74,30 @@ class HBNBCommand(cmd.Cmd):
     except NameError:
         print("** class doesn't exist **")
 
+
 def do_show(self, line):
-        """Prints the string representation of an instance
-        Exceptions:
-            SyntaxError: when there is no args given
-            NameError: when there is no object taht has the name
-            IndexError: when there is no id given
-            KeyError: when there is no valid id given
-        """
-        try:
-            if not line:
-                raise SyntaxError()
-            my_list = line.split(" ")
-            if my_list[0] not in self.__classes:
-                raise NameError()
-            if len(my_list) < 2:
-                raise IndexError()
-            objects = storage.all()
-            key = my_list[0] + '.' + my_list[1]
-            if key in objects:
-                print(objects[key])
-            else:
-                raise KeyError()
+    """Prints the string representation of an instance
+    Exceptions:
+    SyntaxError: when there is no args given
+    NameError: when there is no object taht has the NameError
+    IndexError: when there is no id given
+    KeyError: when there is no valid id given
+    """
+
+    try:
+        if not line:
+            raise SyntaxError()
+        my_list = line.split(" ")
+        if my_list[0] not in self.__classes:
+            raise NameError()
+        if len(my_list) < 2:
+            raise IndexError()
+        objects = storage.all()
+        key = my_list[0] + '.' + my_list[1]
+        if key in objects:
+            print(objects[key])
+        else:
+            raise KeyError()
         except SyntaxError:
             print("** class name missing **")
         except NameError:
@@ -266,13 +268,6 @@ def do_show(self, line):
                     self.do_update(args)
         else:
             cmd.Cmd.default(self, line)
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

@@ -2,7 +2,9 @@
 """ Console Module """
 import cmd
 import sys
+from datetime import datetime
 from models.base_model import BaseModel
+from shlex import split
 from models.__init__ import storage
 from models.user import User
 from models.place import Place
@@ -16,13 +18,30 @@ class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
     # determines prompt for interactive/non-interactive modes
-    prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
-
+    prompt = "(hbnb) "
     classes = {
-               'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review
-              }
+               "BaseModel",
+               "User",
+               "State",
+               "City",
+               "Amenity",
+               "Place",
+               "Review"
+    }
+
+    def emptyline(self):
+        """flag off empty spaces. """
+        pass
+
+    def do_quit(self, line):
+        """Quits and exits the program."""
+        return True
+
+    def do_EOF(self, line):
+        """EOF signal to exit the program."""
+        print("")
+        return True
+
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
     types = {
              'number_rooms': int, 'number_bathrooms': int,

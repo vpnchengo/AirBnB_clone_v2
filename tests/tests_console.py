@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""The console test"""
+"""The console test module"""
 import os
 import json
 import console

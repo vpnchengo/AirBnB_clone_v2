@@ -67,7 +67,7 @@ class Place(BaseModel, Base):
         reviews = relationship(
             "Review",
             backref="place",
-            cascade="all, delete-orphan")
+            cascade="all, delete, delete-orphan")
         amenities = relationship(
             "Amenity",
             seconadry=place_amenity,
@@ -75,11 +75,15 @@ class Place(BaseModel, Base):
     else:
         @property
         def review(self):
-            m = []
-            for id, rvw in models.storage.all(Review).items():
-                if rvw.place.id == Review.id:
-                    m.append(rvw)
-            return m
+            """Getter attribute reviews that returns the list of Review
+            instances with place_id equals to the current Place.id
+            """
+            my_list = []
+            results = models.storage.all('Review').items()
+            for review in results:
+                if self.id == review.place.id:
+                    my_list.append(review)
+            return my_list
 
         @property
         def amenities(self):

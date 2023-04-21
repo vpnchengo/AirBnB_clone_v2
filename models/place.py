@@ -6,21 +6,15 @@ from sqlalchemy import Column, Integer, Float, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 import os
 
-place_amenity = Table(
-    """the place amenity class"""
-    Base.metadata,
-    Column(
-        "place_id",
-        String(60),
-        ForeignKey("places.id"),
-        primary_key=True,
-        nullable=False),
-    Column(
-        "amenity_id",
-        String(60),
-        ForeignKey("amenities.id"),
-        primary_key=True,
-        nullable=False))
+place_amenity = Table("place_amenity", Base.metadata,
+                      Column("place_id", String(60),
+                             ForeignKey("places.id"),
+                             primary_key=True,
+                             nullable=False),
+                      Column("amenity_id", String(60),
+                             ForeignKey("amenities.id"),
+                             primary_key=True,
+                             nullable=False))
 
 
 class Place(BaseModel, Base):

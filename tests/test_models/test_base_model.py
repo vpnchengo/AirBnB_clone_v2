@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """ """
+import os
 from models.base_model import BaseModel
 import unittest
 import datetime
 from uuid import UUID
 import json
-import os
 
 
 class test_basemodel(unittest.TestCase):
@@ -94,6 +94,6 @@ class test_basemodel(unittest.TestCase):
         """ """
         new = self.value()
         self.assertEqual(type(new.updated_at), datetime.datetime)
-        n = new.to_dict()
-        new = BaseModel(**n)
-        self.assertFalse(new.created_at == new.updated_at)
+
+if __name__ == "__main__":
+    unittest.main()

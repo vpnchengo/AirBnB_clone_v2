@@ -4,7 +4,7 @@ import os
 import json
 import console
 import test
-import pep8
+import pycodestyle
 import unittest
 from unittest.mock import patch
 from io import StringIO

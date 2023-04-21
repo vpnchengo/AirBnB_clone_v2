@@ -87,13 +87,16 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            los_angeles = []
-            for angle in amenity_ids:
-                if angel.id == set.id:
-                    amenities_list.append(angel)
-            return los_angeles
+            """getter attribute"""
+            my_list = []
+            results = models.storage.all('Amenity').values()
+            for amenity in results:
+                if self.id == amenity.amenity_ids:
+                    my_list.append(amenity)
+            return my_list
 
         @amenities.setter
-        def amenities(self, angel):
-            if type(angel) is Amenity:
-                self.amenity_ids.append(angel)
+        def amenities(self, value):
+            """ setter attribute"""
+            if isinstance(obj, 'Amenity'):
+                self.amenity_ids.append(obj.id)

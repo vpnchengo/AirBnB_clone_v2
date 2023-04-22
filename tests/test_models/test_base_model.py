@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+"""basemodel test module"""
 import os
 from models.base_model import BaseModel
 import unittest
@@ -9,19 +9,20 @@ import json
 
 
 class test_basemodel(unittest.TestCase):
-    """ """
+    """ this tests the base model class"""
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """class initialization"""
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
 
     def setUp(self):
-        """ """
+        """setup for the test"""
         pass
 
     def tearDown(self):
+        """tear down"""
         try:
             os.remove('file.json')
         except Exception:
@@ -33,14 +34,14 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(i), self.value)
 
     def test_kwargs(self):
-        """ """
+        """test kwargs"""
         i = self.value()
         copy = i.to_dict()
         new = BaseModel(**copy)
         self.assertFalse(new is i)
 
     def test_kwargs_int(self):
-        """ """
+        """test kwargs int"""
         i = self.value()
         copy = i.to_dict()
         copy.update({1: 2})
@@ -57,7 +58,7 @@ class test_basemodel(unittest.TestCase):
             self.assertEqual(j[key], i.to_dict())
 
     def test_str(self):
-        """ """
+        """test string"""
         i = self.value()
         self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id,
                          i.__dict__))

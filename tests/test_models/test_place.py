@@ -1,30 +1,30 @@
 #!/usr/bin/python3
-""" """
+"""test for place"""
 from tests.test_models.test_base_model import test_basemodel
 from models.place import Place
 
 
 class test_Place(test_basemodel):
-    """ """
+    """tests the place class"""
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """initialization"""
         super().__init__(*args, **kwargs)
         self.name = "Place"
         self.value = Place
 
     def test_city_id(self):
-        """ """
+        """tests city id"""
         new = self.value()
         self.assertEqual(type(new.city_id), str)
 
     def test_user_id(self):
-        """ """
+        """tests user id """
         new = self.value()
         self.assertEqual(type(new.user_id), str)
 
     def test_name(self):
-        """ """
+        """tests name"""
         new = self.value()
         self.assertEqual(type(new.name), str)
 
@@ -61,7 +61,7 @@ class test_Place(test_basemodel):
     def test_longitude(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.latitude), float)
+        self.assertEqual(type(new.longitude), float)
 
     def test_amenity_ids(self):
         """ """

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+"""test for amenity """
 from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
 import pycodestyle
@@ -21,7 +21,7 @@ class test_Amenity(test_basemodel):
 
     def testDocumentation(self):
         """compares the documentaion"""
-        self.assertTrue(len(amenity.__doc__) > 0)
+        self.assertTrue(len(Amenity.__doc__) > 0)
         for method in dir(Amenity):
             self.assertTrue(len(method.__doc__) > 0)
 

@@ -5,7 +5,7 @@ sudo apt-get update
 
 sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
-echo "<!DOCTYPE html>
+echo "<html>
   <head>
   </head>
   <body>  	

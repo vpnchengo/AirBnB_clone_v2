@@ -5,10 +5,10 @@ of your AirBnB Clone repo, using the function do_pack.
 """
 from fabric.api import local, env, put, run
 import datetime
-from os import path
+import os
 
 env.user = 'ubuntu'
-env.hosts = ['100.26.222.47', '35.153.67.249']
+env.hosts = ['100.26.222.47', '52.90.22.130']
 
 
 def do_pack():
@@ -36,13 +36,13 @@ def do_deploy(archive_path):
         current = '/data/web_static/current'
         path_a = '/tmp/{}'.format(archive)
         put(archive_path, path_a)
-        run('mkdir -p {}/'.format(path))
-        run('tar -xzf {} -C {}'.format(path_a, path))
-        run('rm {}'.format(path_a))
-        run('mv {}/web_static/* {}'.format(path, path))
-        run('rm -rf {}/web_static'.format(path))
-        run('rm -rf {}'.format(current))
-        run('ln -s {} {}'.format(path, current))
+        run('sudo mkdir -p {}/'.format(path))
+        run('sudo tar -xzf {} -C {}'.format(path_a, path))
+        run('sudo rm {}'.format(path_a))
+        run('sudo mv {}/web_static/* {}'.format(path, path))
+        run('sudo rm -rf {}/web_static'.format(path))
+        run('sudo rm -rf {}'.format(current))
+        run('sudo ln -s {} {}'.format(path, current))
         print('New version deployed!')
         return True
     return False

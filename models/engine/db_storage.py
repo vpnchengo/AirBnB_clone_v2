@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """A database storage engine (DBStorage)"""
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.user import User
 from models.state import State
 from models.city import City
